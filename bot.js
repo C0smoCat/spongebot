@@ -14,8 +14,7 @@ async function Main() {
         next();
     });
     await bot.event('message_reply', async (ctx, next) => {
-        let date = new Date(ctx.message.date * 1000);
-        if (ctx.message.out === 1 && (!ctx.message.attachments || ctx.message.attachments.length <= 0) && (ctx.message.text.trim() === "") && date < new Date().addDays(1)) {
+        if (ctx.message.out === 1 && (!ctx.message.attachments || ctx.message.attachments.length <= 0) && (ctx.message.text.trim() === "")) {
             console.log(`messages.delete: ${ctx.message.id}`);
             await bot.execute('messages.delete', {
                 message_id: ctx.message.id,
